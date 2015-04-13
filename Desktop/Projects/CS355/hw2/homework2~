@@ -1,0 +1,5 @@
+#lang racket
+
+(define state '((A #t)(B #f)(C #t)(D #f)))
+
+(define eval_var (lambda (var_state)  (boolean? var_state)))

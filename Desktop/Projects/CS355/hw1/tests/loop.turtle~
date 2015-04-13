@@ -1,0 +1,11 @@
+#Assumes assignments and action tests are functional
+a := 36
+
+#Should output circle'ish shape 
+WHILE a > 0 DO
+	FORWARD 1
+	LEFT 90
+	a := a - 1
+OD
+
+# run < tests/loop.turtle > loop.pgm

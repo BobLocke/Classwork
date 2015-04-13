@@ -1,0 +1,7 @@
+Ryan "Bob" Dean
+CS 355
+Assignment 4 - Prolog Hill Climb
+
+Given a set of variables with true/false values, will attempt to find the best settings of true/false for a list of logical OR arguments using the variables.
+
+I did not get the extra credit completed. The functions I did complete (1 - 6) do work, to the best of my knowledge.

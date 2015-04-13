@@ -1,0 +1,25 @@
+package crypto;
+
+import java.util.Scanner;
+
+public class PublicKey {
+	
+	public static int main(){
+		System.out.println("(E)ncrypt, (D)ecrypt, or (K)eygen?");
+		Scanner in = new Scanner(System.in);
+		String mode = in.next(); 
+		
+		if (mode == "D"){
+			System.out.print("Decrypt mode");
+		} else if (mode == "E"){
+			System.out.print("Encrypt mode");
+		} else if (mode == "K"){
+			System.out.print("Keygen mode\n Please enter seed:");
+		} else {
+			System.out.println(mode + " is not a valid mode.");
+			return -1;
+		}
+		return 0;
+	}
+
+}

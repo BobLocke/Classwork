@@ -1,0 +1,15 @@
+Ryan "Bob" Dean
+CS360 Assignment 8 - multi-threaded sort
+
+
+
+to run:
+
+make
+./Sort
+
+Files included:
+
+makefile
+sort.c, sort.h - the program
+

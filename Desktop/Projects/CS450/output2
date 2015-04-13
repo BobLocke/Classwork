@@ -1,0 +1,934 @@
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+rebalance key: 16
+Scapegoat key: 2
+children of scapegoat: None, 230
+[2, 8, 9, 11, 12, 15, 16, 230]
+midpoint is 4
+(0, 3)
+(5, 8)
+(0, 3)
+midpoint is 1, value is 8
+(0, 0)
+midpoint is 0, value is 2
+(2, 3)
+midpoint is 2, value is 9
+(2, 1)
+done
+(5, 7)
+midpoint is 6, value is 16
+(5, 5)
+midpoint is 5, value is 15
+(7, 7)
+midpoint is 7, value is 230
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+rebalance key: 65
+Scapegoat key: 16
+children of scapegoat: <__main__.Node instance at 0x23f81b8>, 230
+[15, 16, 17, 18, 19, 20, 59, 62, 65, 230]
+midpoint is 5
+(0, 4)
+(6, 10)
+(0, 4)
+midpoint is 2, value is 17
+(0, 1)
+midpoint is 0, value is 15
+(0, -1)
+done
+(3, 4)
+midpoint is 3, value is 18
+(3, 2)
+done
+(6, 9)
+midpoint is 7, value is 62
+(6, 6)
+midpoint is 6, value is 59
+(8, 9)
+midpoint is 8, value is 65
+(8, 7)
+done
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+rebalance key: 101
+Scapegoat key: 12
+children of scapegoat: <__main__.Node instance at 0x23f8098>, 20
+[2, 7, 8, 9, 12, 15, 17, 18, 20, 59, 62, 65, 68, 71, 77, 89, 95, 98, 101]
+midpoint is 9
+(0, 8)
+(10, 19)
+(0, 8)
+midpoint is 4, value is 12
+(0, 3)
+midpoint is 1, value is 7
+(0, 0)
+midpoint is 0, value is 2
+(2, 3)
+midpoint is 2, value is 8
+(2, 1)
+done
+(5, 8)
+midpoint is 6, value is 17
+(5, 5)
+midpoint is 5, value is 15
+(7, 8)
+midpoint is 7, value is 18
+(7, 6)
+done
+(10, 18)
+midpoint is 14, value is 77
+(10, 13)
+midpoint is 11, value is 65
+(10, 10)
+midpoint is 10, value is 62
+(12, 13)
+midpoint is 12, value is 68
+(12, 11)
+done
+(15, 18)
+midpoint is 16, value is 95
+(15, 15)
+midpoint is 15, value is 89
+(17, 18)
+midpoint is 17, value is 98
+(17, 16)
+done
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+rebalance key: 128
+Scapegoat key: 77
+children of scapegoat: <__main__.Node instance at 0x23f8bd8>, 95
+[62, 65, 68, 77, 89, 95, 98, 107, 110, 113, 116, 119, 125, 128]
+midpoint is 7
+(0, 6)
+(8, 14)
+(0, 6)
+midpoint is 3, value is 77
+(0, 2)
+midpoint is 1, value is 65
+(0, 0)
+midpoint is 0, value is 62
+(2, 2)
+midpoint is 2, value is 68
+(4, 6)
+midpoint is 5, value is 95
+(4, 4)
+midpoint is 4, value is 89
+(6, 6)
+midpoint is 6, value is 98
+(8, 13)
+midpoint is 10, value is 116
+(8, 9)
+midpoint is 8, value is 110
+(8, 7)
+done
+(11, 13)
+midpoint is 12, value is 125
+(11, 11)
+midpoint is 11, value is 119
+(13, 13)
+midpoint is 13, value is 128
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+rebalance key: 200
+Scapegoat key: 256
+children of scapegoat: <__main__.Node instance at 0x23f7cb0>, 293
+[2, 7, 8, 12, 15, 17, 18, 59, 62, 65, 68, 77, 80, 83, 89, 92, 95, 98, 107, 110, 116, 119, 125, 128, 146, 152, 155, 158, 161, 182, 185, 188, 191, 194, 197, 200, 256, 263, 266, 278, 293, 323, 326, 332, 335, 338, 527, 530, 560, 584]
+midpoint is 25
+(0, 24)
+(26, 50)
+(0, 24)
+midpoint is 12, value is 80
+(0, 11)
+midpoint is 5, value is 17
+(0, 4)
+midpoint is 2, value is 8
+(0, 1)
+midpoint is 0, value is 2
+(0, -1)
+done
+(3, 4)
+midpoint is 3, value is 12
+(3, 2)
+done
+(6, 11)
+midpoint is 8, value is 62
+(6, 7)
+midpoint is 6, value is 18
+(6, 5)
+done
+(9, 11)
+midpoint is 10, value is 68
+(9, 9)
+midpoint is 9, value is 65
+(11, 11)
+midpoint is 11, value is 77
+(13, 24)
+midpoint is 18, value is 107
+(13, 17)
+midpoint is 15, value is 92
+(13, 14)
+midpoint is 13, value is 83
+(13, 12)
+done
+(16, 17)
+midpoint is 16, value is 95
+(16, 15)
+done
+(19, 24)
+midpoint is 21, value is 119
+(19, 20)
+midpoint is 19, value is 110
+(19, 18)
+done
+(22, 24)
+midpoint is 23, value is 128
+(22, 22)
+midpoint is 22, value is 125
+(24, 24)
+midpoint is 24, value is 146
+(26, 49)
+midpoint is 37, value is 263
+(26, 36)
+midpoint is 31, value is 188
+(26, 30)
+midpoint is 28, value is 161
+(26, 27)
+midpoint is 26, value is 155
+(26, 25)
+done
+(29, 30)
+midpoint is 29, value is 182
+(29, 28)
+done
+(32, 36)
+midpoint is 34, value is 197
+(32, 33)
+midpoint is 32, value is 191
+(32, 31)
+done
+(35, 36)
+midpoint is 35, value is 200
+(35, 34)
+done
+(38, 49)
+midpoint is 43, value is 332
+(38, 42)
+midpoint is 40, value is 293
+(38, 39)
+midpoint is 38, value is 266
+(38, 37)
+done
+(41, 42)
+midpoint is 41, value is 323
+(41, 40)
+done
+(44, 49)
+midpoint is 46, value is 527
+(44, 45)
+midpoint is 44, value is 335
+(44, 43)
+done
+(47, 49)
+midpoint is 48, value is 560
+(47, 47)
+midpoint is 47, value is 530
+(49, 49)
+midpoint is 49, value is 584
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+rebalance key: 236
+Scapegoat key: 188
+children of scapegoat: <__main__.Node instance at 0x23f8cb0>, 197
+[155, 161, 182, 188, 191, 197, 200, 206, 209, 212, 215, 218, 221, 224, 227, 236]
+midpoint is 8
+(0, 7)
+(9, 16)
+(0, 7)
+midpoint is 3, value is 188
+(0, 2)
+midpoint is 1, value is 161
+(0, 0)
+midpoint is 0, value is 155
+(2, 2)
+midpoint is 2, value is 182
+(4, 7)
+midpoint is 5, value is 197
+(4, 4)
+midpoint is 4, value is 191
+(6, 7)
+midpoint is 6, value is 200
+(6, 5)
+done
+(9, 15)
+midpoint is 12, value is 221
+(9, 11)
+midpoint is 10, value is 215
+(9, 9)
+midpoint is 9, value is 212
+(11, 11)
+midpoint is 11, value is 218
+(13, 15)
+midpoint is 14, value is 227
+(13, 13)
+midpoint is 13, value is 224
+(15, 15)
+midpoint is 15, value is 236
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+rebalance key: 437
+Scapegoat key: 152
+children of scapegoat: <__main__.Node instance at 0x23f9830>, 263
+[2, 8, 10, 12, 13, 14, 17, 18, 62, 65, 68, 77, 80, 83, 86, 92, 95, 107, 110, 119, 125, 128, 131, 137, 140, 143, 146, 152, 155, 161, 182, 188, 191, 197, 200, 209, 212, 215, 218, 221, 224, 227, 236, 239, 242, 245, 248, 254, 257, 260, 263, 266, 272, 275, 281, 284, 290, 293, 296, 299, 302, 305, 308, 314, 317, 320, 323, 329, 332, 335, 341, 344, 347, 350, 353, 356, 359, 371, 374, 377, 380, 386, 389, 392, 395, 398, 401, 404, 428, 431, 434, 437, 527, 530, 533, 536, 539, 542, 545, 548, 551, 554, 557, 560, 584, 590, 596]
+midpoint is 53
+(0, 52)
+(54, 107)
+(0, 52)
+midpoint is 26, value is 146
+(0, 25)
+midpoint is 12, value is 80
+(0, 11)
+midpoint is 5, value is 14
+(0, 4)
+midpoint is 2, value is 10
+(0, 1)
+midpoint is 0, value is 2
+(0, -1)
+done
+(3, 4)
+midpoint is 3, value is 12
+(3, 2)
+done
+(6, 11)
+midpoint is 8, value is 62
+(6, 7)
+midpoint is 6, value is 17
+(6, 5)
+done
+(9, 11)
+midpoint is 10, value is 68
+(9, 9)
+midpoint is 9, value is 65
+(11, 11)
+midpoint is 11, value is 77
+(13, 25)
+midpoint is 19, value is 119
+(13, 18)
+midpoint is 15, value is 92
+(13, 14)
+midpoint is 13, value is 83
+(13, 12)
+done
+(16, 18)
+midpoint is 17, value is 107
+(16, 16)
+midpoint is 16, value is 95
+(18, 18)
+midpoint is 18, value is 110
+(20, 25)
+midpoint is 22, value is 131
+(20, 21)
+midpoint is 20, value is 125
+(20, 19)
+done
+(23, 25)
+midpoint is 24, value is 140
+(23, 23)
+midpoint is 23, value is 137
+(25, 25)
+midpoint is 25, value is 143
+(27, 52)
+midpoint is 39, value is 221
+(27, 38)
+midpoint is 32, value is 191
+(27, 31)
+midpoint is 29, value is 161
+(27, 28)
+midpoint is 27, value is 152
+(27, 26)
+done
+(30, 31)
+midpoint is 30, value is 182
+(30, 29)
+done
+(33, 38)
+midpoint is 35, value is 209
+(33, 34)
+midpoint is 33, value is 197
+(33, 32)
+done
+(36, 38)
+midpoint is 37, value is 215
+(36, 36)
+midpoint is 36, value is 212
+(38, 38)
+midpoint is 38, value is 218
+(40, 52)
+midpoint is 46, value is 248
+(40, 45)
+midpoint is 42, value is 236
+(40, 41)
+midpoint is 40, value is 224
+(40, 39)
+done
+(43, 45)
+midpoint is 44, value is 242
+(43, 43)
+midpoint is 43, value is 239
+(45, 45)
+midpoint is 45, value is 245
+(47, 52)
+midpoint is 49, value is 260
+(47, 48)
+midpoint is 47, value is 254
+(47, 46)
+done
+(50, 52)
+midpoint is 51, value is 266
+(50, 50)
+midpoint is 50, value is 263
+(52, 52)
+midpoint is 52, value is 272
+(54, 106)
+midpoint is 80, value is 380
+(54, 79)
+midpoint is 66, value is 323
+(54, 65)
+midpoint is 59, value is 299
+(54, 58)
+midpoint is 56, value is 290
+(54, 55)
+midpoint is 54, value is 281
+(54, 53)
+done
+(57, 58)
+midpoint is 57, value is 293
+(57, 56)
+done
+(60, 65)
+midpoint is 62, value is 308
+(60, 61)
+midpoint is 60, value is 302
+(60, 59)
+done
+(63, 65)
+midpoint is 64, value is 317
+(63, 63)
+midpoint is 63, value is 314
+(65, 65)
+midpoint is 65, value is 320
+(67, 79)
+midpoint is 73, value is 350
+(67, 72)
+midpoint is 69, value is 335
+(67, 68)
+midpoint is 67, value is 329
+(67, 66)
+done
+(70, 72)
+midpoint is 71, value is 344
+(70, 70)
+midpoint is 70, value is 341
+(72, 72)
+midpoint is 72, value is 347
+(74, 79)
+midpoint is 76, value is 359
+(74, 75)
+midpoint is 74, value is 353
+(74, 73)
+done
+(77, 79)
+midpoint is 78, value is 374
+(77, 77)
+midpoint is 77, value is 371
+(79, 79)
+midpoint is 79, value is 377
+(81, 106)
+midpoint is 93, value is 530
+(81, 92)
+midpoint is 86, value is 401
+(81, 85)
+midpoint is 83, value is 392
+(81, 82)
+midpoint is 81, value is 386
+(81, 80)
+done
+(84, 85)
+midpoint is 84, value is 395
+(84, 83)
+done
+(87, 92)
+midpoint is 89, value is 431
+(87, 88)
+midpoint is 87, value is 404
+(87, 86)
+done
+(90, 92)
+midpoint is 91, value is 437
+(90, 90)
+midpoint is 90, value is 434
+(92, 92)
+midpoint is 92, value is 527
+(94, 106)
+midpoint is 100, value is 551
+(94, 99)
+midpoint is 96, value is 539
+(94, 95)
+midpoint is 94, value is 533
+(94, 93)
+done
+(97, 99)
+midpoint is 98, value is 545
+(97, 97)
+midpoint is 97, value is 542
+(99, 99)
+midpoint is 99, value is 548
+(101, 106)
+midpoint is 103, value is 560
+(101, 102)
+midpoint is 101, value is 554
+(101, 100)
+done
+(104, 106)
+midpoint is 105, value is 590
+(104, 104)
+midpoint is 104, value is 584
+(106, 106)
+midpoint is 106, value is 596
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+rebalance key: 46
+Scapegoat key: 14
+children of scapegoat: <__main__.Node instance at 0x23fae60>, 62
+[2, 10, 12, 14, 17, 35, 36, 37, 39, 40, 41, 42, 43, 44, 46, 62, 65, 68, 77]
+midpoint is 9
+(0, 8)
+(10, 19)
+(0, 8)
+midpoint is 4, value is 17
+(0, 3)
+midpoint is 1, value is 10
+(0, 0)
+midpoint is 0, value is 2
+(2, 3)
+midpoint is 2, value is 12
+(2, 1)
+done
+(5, 8)
+midpoint is 6, value is 36
+(5, 5)
+midpoint is 5, value is 35
+(7, 8)
+midpoint is 7, value is 37
+(7, 6)
+done
+(10, 18)
+midpoint is 14, value is 46
+(10, 13)
+midpoint is 11, value is 42
+(10, 10)
+midpoint is 10, value is 41
+(12, 13)
+midpoint is 12, value is 43
+(12, 11)
+done
+(15, 18)
+midpoint is 16, value is 65
+(15, 15)
+midpoint is 15, value is 62
+(17, 18)
+midpoint is 17, value is 68
+(17, 16)
+done
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+rebalance key: 467
+Scapegoat key: 401
+children of scapegoat: <__main__.Node instance at 0x23fd0e0>, 431
+[386, 392, 395, 401, 404, 431, 434, 437, 440, 443, 446, 449, 452, 455, 458, 461, 464, 467, 527]
+midpoint is 9
+(0, 8)
+(10, 19)
+(0, 8)
+midpoint is 4, value is 404
+(0, 3)
+midpoint is 1, value is 392
+(0, 0)
+midpoint is 0, value is 386
+(2, 3)
+midpoint is 2, value is 395
+(2, 1)
+done
+(5, 8)
+midpoint is 6, value is 434
+(5, 5)
+midpoint is 5, value is 431
+(7, 8)
+midpoint is 7, value is 437
+(7, 6)
+done
+(10, 18)
+midpoint is 14, value is 458
+(10, 13)
+midpoint is 11, value is 449
+(10, 10)
+midpoint is 10, value is 446
+(12, 13)
+midpoint is 12, value is 452
+(12, 11)
+done
+(15, 18)
+midpoint is 16, value is 464
+(15, 15)
+midpoint is 15, value is 461
+(17, 18)
+midpoint is 17, value is 467
+(17, 16)
+done
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+rebalance key: 518
+Scapegoat key: 458
+children of scapegoat: <__main__.Node instance at 0x23fc3b0>, 464
+[446, 449, 452, 458, 461, 464, 467, 470, 473, 476, 488, 494, 497, 500, 506, 509, 515, 518]
+midpoint is 9
+(0, 8)
+(10, 18)
+(0, 8)
+midpoint is 4, value is 461
+(0, 3)
+midpoint is 1, value is 449
+(0, 0)
+midpoint is 0, value is 446
+(2, 3)
+midpoint is 2, value is 452
+(2, 1)
+done
+(5, 8)
+midpoint is 6, value is 467
+(5, 5)
+midpoint is 5, value is 464
+(7, 8)
+midpoint is 7, value is 470
+(7, 6)
+done
+(10, 17)
+midpoint is 13, value is 500
+(10, 12)
+midpoint is 11, value is 494
+(10, 10)
+midpoint is 10, value is 488
+(12, 12)
+midpoint is 12, value is 497
+(14, 17)
+midpoint is 15, value is 509
+(14, 14)
+midpoint is 14, value is 506
+(16, 17)
+midpoint is 16, value is 515
+(16, 15)
+done
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+Command : 
+						596			(children: 593)
+							593			(children: None)
+					590			(children: 584, 596)
+							587			(children: None)
+						584			(children: 563, 587)
+													581			(children: None)
+												578			(children: 581)
+											575			(children: 578)
+										572			(children: 575)
+									569			(children: 572)
+								566			(children: 569)
+							563			(children: 566)
+				560			(children: 554, 590)
+					554			(children: None)
+			551			(children: 539, 560)
+						548			(children: None)
+					545			(children: 542, 548)
+						542			(children: None)
+				539			(children: 533, 545)
+					533			(children: None)
+		530			(children: 443, 551)
+									524			(children: None)
+								521			(children: 524)
+							515			(children: 521)
+						509			(children: 506, 515)
+							506			(children: None)
+					500			(children: 494, 509)
+							497			(children: None)
+						494			(children: 488, 497)
+							488			(children: None)
+				476			(children: 461, 500)
+							470			(children: None)
+						467			(children: 464, 470)
+							464			(children: None)
+					461			(children: 449, 467)
+							452			(children: None)
+						449			(children: 446, 452)
+							446			(children: None)
+			443			(children: 404, 476)
+						437			(children: None)
+					434			(children: 431, 437)
+						431			(children: None)
+				404			(children: 392, 434)
+						395			(children: None)
+					392			(children: 386, 395)
+						386			(children: None)
+	380			(children: 323, 530)
+						377			(children: None)
+					374			(children: 371, 377)
+						371			(children: None)
+				359			(children: 353, 374)
+					353			(children: None)
+			350			(children: 335, 359)
+						347			(children: None)
+					344			(children: 341, 347)
+						341			(children: None)
+				335			(children: 329, 344)
+					329			(children: None)
+		323			(children: 299, 350)
+						320			(children: None)
+					317			(children: 314, 320)
+						314			(children: 311)
+							311			(children: None)
+				308			(children: 302, 317)
+					302			(children: None)
+			299			(children: 290, 308)
+					293			(children: None)
+				290			(children: 281, 293)
+					281			(children: None)
+275			(children: 146, 380)
+						272			(children: None)
+					266			(children: 263, 272)
+						263			(children: None)
+				260			(children: 254, 266)
+					254			(children: None)
+			248			(children: 236, 260)
+						245			(children: None)
+					242			(children: 239, 245)
+						239			(children: None)
+				236			(children: 224, 242)
+					224			(children: None)
+		221			(children: 191, 248)
+						218			(children: None)
+					215			(children: 212, 218)
+						212			(children: None)
+				209			(children: 197, 215)
+					197			(children: None)
+			191			(children: 161, 209)
+					182			(children: 167)
+									176			(children: None)
+								173			(children: 176)
+							170			(children: 173)
+						167			(children: 170)
+				161			(children: 152, 182)
+					152			(children: None)
+	146			(children: 80, 221)
+						143			(children: None)
+					140			(children: 137, 143)
+						137			(children: None)
+				131			(children: 125, 140)
+					125			(children: None)
+			119			(children: 92, 131)
+						110			(children: None)
+					107			(children: 95, 110)
+						95			(children: None)
+				92			(children: 83, 107)
+					83			(children: None)
+		80			(children: 40, 119)
+						68			(children: None)
+					65			(children: 62, 68)
+						62			(children: 47)
+											56			(children: None)
+										50			(children: 56)
+									49			(children: 50)
+								48			(children: 49)
+							47			(children: 48)
+				46			(children: 42, 65)
+						43			(children: None)
+					42			(children: 41, 43)
+						41			(children: None)
+			40			(children: 17, 46)
+						37			(children: None)
+					36			(children: 35, 37)
+						35			(children: 27)
+										33			(children: None)
+									32			(children: 33)
+								31			(children: 28, 32)
+										29			(children: None)
+									28			(children: 29)
+							27			(children: 31)
+				17			(children: 10, 36)
+						12			(children: None)
+					10			(children: 2, 12)
+						2			(children: None)
+Command : 

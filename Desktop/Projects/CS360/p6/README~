@@ -1,0 +1,25 @@
+Ryan "Bob" Dean
+CS360 Assignment 5 - Warn
+
+
+Handles interrupts, sends message across the pipe between child and parent. Will display message every [delay] seconds (see below).
+
+
+
+to run:
+
+make
+./Warn
+
+When interrupted with Ctrl+C, takes the following input:
+
+[delay]string
+
+delay: the amount of seconds between messages
+
+
+Files included:
+
+makefile
+p5.c - code for the connect executable
+

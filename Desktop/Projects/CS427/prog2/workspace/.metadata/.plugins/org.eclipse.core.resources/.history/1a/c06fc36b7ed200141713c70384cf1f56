@@ -1,0 +1,104 @@
+package crypto;
+
+import java.util.Random;
+import java.util.Scanner;
+import java.math.BigInteger;
+
+public class Bigcrypto {
+	
+	// x = a ^ b % c
+	
+	// Should be redundant
+	private static BigInteger powMod(BigInteger base, BigInteger exp, BigInteger mod){
+		BigInteger x = new BigInteger("1");
+		base = base.mod(mod);
+		
+		while (exp.compareTo(BigInteger.ZERO) == 1){
+			if (exp.mod(new BigInteger("2")).equals(BigInteger.ONE)){
+				x = (x.multiply(base)).mod(mod);
+			}
+			exp = exp.divide(new BigInteger("2"));
+			base = (base.multiply(base)).mod(mod);
+		}
+		return x;
+	}	
+	
+	// check for primality
+	private static boolean millerRabin(BigInteger n){
+		BigInteger q = n.subtract(BigInteger.ONE);
+		int k = 0;
+		
+		while(q.mod(new BigInteger("2")).equals(BigInteger.ZERO)){
+			k += 1;	
+			q = q.divide(new BigInteger("2"));
+		}
+		Random rand = new Random();
+			
+		// a must be in the range of n
+		BigInteger a = new BigInteger(31, rand);
+		a = a.mod(n.subtract(new BigInteger("2"))).add(new BigInteger("2"));
+		System.out.println("Testing primality with random value " + a);
+		if (powMod(a, q, n).equals(BigInteger.ONE)){
+			System.out.println("Maybe prime");
+			return true;
+		}
+		BigInteger power = new BigInteger("1");
+		for (int j = 0; j < k-1; j++){
+			if (a.modPow(power, n).equals(n.subtract(BigInteger.ONE))){
+				System.out.println("Maybe prime");
+				return true;
+			}
+			power.multiply(new BigInteger("2"));
+		}
+		return false;
+	}
+
+	public static void main(String args[]){
+		int ITERS = 40;
+		long max = 0x7FFFFFFF;
+		long min = 0x40000000;
+		Scanner in = new Scanner(System.in);
+		
+		
+		while(true){
+			System.out.println("XXXXXX(1) Keygen, (2) Encrypt, (3) Decrypt?, or (9) Quit");
+			int mode = in.nextInt();
+			System.out.println("Input: " + mode);
+			if (mode == 1){
+				System.out.println("Keygen: Please input seed:");
+				boolean pflag;
+				/*
+				long seed = in.nextLong();
+				Random r = new Random(seed);
+				BigInteger p = new BigInteger(31, r);				
+				long prime = Math.abs(p.longValue());				
+				prime = prime % (max - min) + min;
+				prime = prime * 2 + 1;
+				*/
+				BigInteger prime = new BigInteger("452019461");
+				System.out.println("Testing " + prime + "...");
+				if (millerRabin(prime) == true){
+					System.out.println("\t\t\t" + prime + " is maybe prime.");
+				} else System.out.println(prime + " is not prime.");	
+				
+			continue;
+				
+			} else if (mode == 2){
+				System.out.println("Encrypting...");
+	
+	
+			} else if (mode == 3){
+				System.out.println("Decrypting...");
+	
+			}else if (mode == 9){
+				System.out.println("Bye!");
+				in.close();
+				return;
+			} else {
+				System.out.println(mode + " is not a valid option.");
+			}
+		}
+	}
+
+	
+}

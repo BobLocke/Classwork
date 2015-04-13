@@ -1,0 +1,12 @@
+Ryan "Bob" Dean
+CS 455 Assignment 2 - Proxy Server
+
+Created a proxy server that takes requests from the client, checks a cache for stored website data and/or sends the request to the server.
+
+To run:
+
+python [filename] [port number]
+
+Note:
+
+I didn't have access to wireshark. If this portion can be turned in later, I'll try to get it to you then.

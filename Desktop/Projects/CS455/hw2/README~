@@ -1,0 +1,10 @@
+Ryan "Bob" Dean
+CS 455 Assignment 2 - Proxy Server
+
+To run:
+
+python [filename] [port number]
+
+Note:
+
+I didn't have access to wireshark. If this portion can be turned in later, I'll try to get it to you then.

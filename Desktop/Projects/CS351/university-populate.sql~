@@ -1,0 +1,84 @@
+/* Populate the tables with our data */
+
+insert into Department values ('CS', 'School of Computer Science', 'Engineering and Computer Science Building');
+insert into Department values ('MATH', 'Department of Mathematics', 'Science Building');
+insert into Department values ('BUS', 'School of Business', 'Classroom Building');
+insert into Department values ('ENGL', 'Department of English', 'Undergraduate Classroom Building');
+insert into Department values ('ENGR', 'Department of Engineering', 'Science Building');
+insert into Department values ('HCKY', 'Department of Hockey', 'Nurses Office');
+insert into Department values ('PYRC', 'Department of Success At All Costs', 'Battle Building');
+insert into Department values ('CAKE', 'Department of Pie', 'Butter Building');
+insert into Department values ('RUFF', 'School of Hard Knocks', 'The Streets');
+
+insert into AcademicCoordinator values (1620, 'Bob Locke', 120000, 'FSC', 100);
+insert into AcademicCoordinator values (8675, 'Zach', 2, 'VSS', 1);
+insert into AcademicCoordinator values (266, 'Sebastian', 70000, 'VECS', 323);
+insert into AcademicCoordinator values (1844, 'Joseph', 120000, 'FSC', 100);
+insert into AcademicCoordinator values (1665, 'John', 15000, 'VDEN', 201);
+insert into AcademicCoordinator values (1666, 'Jacob', 15000, 'VDEN', 101);
+insert into AcademicCoordinator values (1667, 'Jingleheimer', 1250000, 'VDEN', 102);
+insert into AcademicCoordinator values (1669, 'Smith', 1520000, 'VDEN', 202);
+
+insert into Student values (1282, 2.5, 'Mark');
+insert into Student values (1510, 3.0, 'Jordan');
+insert into Student values (1689, 2.4, 'Gabriel');
+insert into Student values (1381, 4.0, 'Tiffany');
+insert into Student values (1709, 2.9, 'Cassandra');
+insert into Student values (1101, 4.0, 'Haley');
+insert into Student values (1782, 3.7, 'Andrew');
+insert into Student values (1468, 1.0, 'Kris');
+insert into Student values (1641, 2.7, 'Brittany');
+insert into Student values (1247, 3.9, 'Alexis');
+
+/*
+
+insert into Course values (351, 'CS', 'Intro to Database Systems', 'VELS 19', 'MW', '12:00');
+insert into Course values (460, 'CS', 'Operating Systems', 'VMMC 8', 'MW', '14:00');
+insert into Course values (122, 'CS', 'OOP', 'VELS 19', 'TR', '12:00');
+insert into Course values (453, 'CS', 'Web Data Management', 'VELS 23', 'TR', '09:00');
+insert into Course values (122, 'BUS', 'Economics', 'VUCB 30', 'MW', '13:30');
+insert into Course values (351, 'BUS', 'Finance', 'VUCB 29', 'TR', '12:00');
+insert into Course values (120, 'MATH', 'Algebra', 'VMMC 10', 'MW', '12:00');
+insert into Course values (520, 'ENG', 'Intro to Shakespeare', 'VUCB 20', 'TR', '06:00');
+insert into Course values (230, 'MATH', 'Linear Algebra', 'VUCB 308', 'TR', '15:00');
+insert into Course values (330, 'MATH', 'Trig', 'VECS 113', 'TR', '08:30');
+insert into Course values (460, 'MATH', 'Calc III', 'VECS 102', 'TR', '12:30');
+insert into Course values (320, 'MATH', 'Discrete Math', 'VUCB 307', 'F', '11:00');
+insert into Course values (520, 'CS', 'HPC', 'VECS 307', 'TR', '06:00');
+
+insert into Enroll values (351, 'CS', 1282);
+insert into Enroll values (351, 'CS', 1510);
+insert into Enroll values (351, 'BUS', 1510);
+insert into Enroll values (122, 'BUS', 1510);
+insert into Enroll values (460, 'CS', 1316);
+insert into Enroll values (460, 'CS', 1689);
+insert into Enroll values (520, 'ENG', 1689);
+insert into Enroll values (351, 'CS', 1661);
+insert into Enroll values (320, 'MATH', 1247);
+insert into Enroll values (460, 'CS', 1661);
+insert into Enroll values (460, 'MATH', 1661);
+insert into Enroll values (351, 'BUS', 1661);
+insert into Enroll values (453, 'CS', 1247);
+insert into Enroll values (351, 'CS', 1247);
+insert into Enroll values (520, 'ENG', 1782);
+insert into Enroll values (351, 'BUS', 1025);
+insert into Enroll values (520, 'ENG', 1304);
+insert into Enroll values (351, 'BUS', 1304);
+insert into Enroll values (520, 'CS', 1247);
+insert into Enroll values (351, 'CS', 1501);
+insert into Enroll values (230, 'MATH', 1101);
+insert into Enroll values (120, 'MATH', 1101);
+insert into Enroll values (351, 'CS', 1911);
+insert into Enroll values (453, 'CS', 1911);
+insert into Enroll values (230, 'MATH', 1911);
+insert into Enroll values (351, 'CS', 1025);
+insert into Enroll values (122, 'BUS', 1316);
+insert into Enroll values (520, 'ENG', 1782);
+insert into Enroll values (230, 'MATH', 1782);
+insert into Enroll values (122, 'BUS', 1282);
+insert into Enroll values (520, 'ENG', 1025);
+insert into Enroll values (520, 'CS', 1025);
+insert into Enroll values (351, 'CS', 1934);
+insert into Enroll values (453, 'CS', 1934);
+insert into Enroll values (520, 'ENG', 1934);
+*/

@@ -1,0 +1,5 @@
+
+- intepreter is the working binary for the turtle interpreter
+- test_turtle is the script for testing the intepreter with all programs in the tests folder. It will creates images in the outputs folder. 
+
+  

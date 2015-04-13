@@ -1,0 +1,4 @@
+context_switch: example binary for step 2.4
+context_switch1: example binary for step 2.5 where the other thread finishes first
+context_switch2: example binary for step 2.5 where the main thread finishes first
+

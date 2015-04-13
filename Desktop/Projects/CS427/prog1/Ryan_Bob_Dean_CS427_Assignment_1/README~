@@ -1,0 +1,18 @@
+Ryan "Bob" Dean
+lockelocke1620@yahoo.com
+CS 427 - Program 1 - WSUcrypt
+
+This program encrypts and decrypts text using the methods found in the WSUcrypt documentation.
+
+
+To Run:
+
+make
+./WSUcrypt <inputfile> <key> <flag>
+
+inputfile (encrypt): a textfile containing plain text
+inputfile (decrypt): a textfile containing a hex string (any length)
+key: a text file containing a 16 character hex string
+flag: d for decrypt, e for encrypt
+
+

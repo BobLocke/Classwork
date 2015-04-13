@@ -1,0 +1,23 @@
+// Ryan "Bob" Dean
+// CS 330 Assignment 1
+// In which I realize I forgot everything from Calc 2 and Intro to C
+
+#include<stdlib.h>
+#include<math.h>
+#include<stdlib.h>
+
+int main(int argc, char** argv)
+{
+	int n, j = 0;
+	double nPlusOneFactorial = 1;
+	double error = 0;
+
+	for(n=1, n <= 15, n++){
+		nPlusOneFactorial *= (n + 1);
+		error = 2/(nPlusOneFactorial) * m_pow(m_ln(2)/2), n + 1)
+		
+		fprintf("N = %i, error = %d\n", n, error);
+	}
+
+return 0;	
+}

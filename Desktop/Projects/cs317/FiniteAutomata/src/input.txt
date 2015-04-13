@@ -1,0 +1,11 @@
++
+ab+
+&
+abcde
+ab*
+*
+abtr^+
+a*
+ab&
+ab&*
+abcde

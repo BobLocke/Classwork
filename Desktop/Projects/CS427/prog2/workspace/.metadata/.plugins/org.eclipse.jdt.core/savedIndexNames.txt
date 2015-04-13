@@ -1,0 +1,18 @@
+INDEX VERSION 1.127+/Network/Servers/fs.labs.encs/Volumes/raid2/users_b/boblocke/Desktop/CS427/prog2/workspace/.metadata/.plugins/org.eclipse.jdt.core
+279830152.index
+2760310435.index
+3451541751.index
+2681633106.index
+3532527149.index
+1093312463.index
+421959158.index
+2104696621.index
+3379659053.index
+4089379701.index
+622655119.index
+1350814732.index
+1086518143.index
+825668503.index
+2778491893.index
+3983542563.index
+3002234420.index

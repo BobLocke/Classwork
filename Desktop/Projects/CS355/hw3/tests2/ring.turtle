@@ -1,0 +1,54 @@
+#
+# Ring of stars
+#
+
+# Declaration at the beginning of a program
+#
+VAR RAD
+VAR N
+VAR L
+VAR DTHETA
+VAR THETA
+VAR I
+
+RAD := 10  # ring radius
+N := 9     # num stars
+L := 10    # "width" of star
+
+DTHETA := 360 / N    # angle between stars
+THETA := 0           # initial angle
+
+I := 1
+WHILE I <= N DO
+  #Declearation at the beginning of a block
+  #
+  VAR J
+
+
+  PUSHSTATE
+  LEFT THETA
+  PENUP
+  FORWARD RAD
+  PENDOWN
+
+  WHILE J <= 5 DO
+    #declaraton at the beginning of a nested block
+    #Note: redeclare DTHETA here
+    #
+    VAR DTHETA
+
+    DTHETA := 720/5
+
+    FORWARD L
+    RIGHT DTHETA
+    J := J+1
+  OD
+
+  #DTHETA should have its value restored 
+ 
+  POPSTATE
+  THETA := THETA + DTHETA
+  I := I+1
+OD
+
+

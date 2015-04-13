@@ -1,0 +1,13 @@
+Ryan "Bob" Dean
+Assignment 3 - readable
+CS 360
+
+Traverses the file system and prints pathnames to all the readable files.
+
+to run:
+
+make
+./readable [pathname]
+
+pathname: If pathname is defined, the program will start from that path. Otherwise, it will start from the current working directory.
+

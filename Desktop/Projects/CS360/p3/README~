@@ -1,0 +1,12 @@
+Ryan "Bob" Dean
+Assignment 3 - readable
+CS 360
+
+Traverses the file system and prints pathnames to all the readable files.
+
+
+to run:
+
+make
+./readable word
+

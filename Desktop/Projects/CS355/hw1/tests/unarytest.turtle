@@ -1,0 +1,9 @@
+#Assumes assignment, action, and while tests pass
+
+a := -10
+a := -a
+WHILE a > 0 DO
+	a := a - 1
+	LEFT 10
+	FORWARD 5
+OD

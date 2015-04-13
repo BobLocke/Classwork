@@ -1,0 +1,33 @@
+#lang racket
+
+(define state '((A #f)(B #t)(C #f)(D #f)))
+
+(define clause '(A (not B) C))
+
+(define eval_var (lambda (var state) 
+        (if (equal? (car (car state)) var) 
+           (car (cdr (car state))) 
+        (eval_var var (cdr state)))))
+
+(define eval_clause(lambda (clause state)
+        (if (empty? clause) 
+            #f
+            (if (list? (car clause)) 
+                (if (not (eval_var (car (cdr (car clause))) state))
+                    #t
+                    (eval_clause (rest clause) state))                    
+                (if 
+                    (equal? (eval_var (car clause) state) #t) 
+                        #t 
+                        (eval_clause (rest clause) state))))))
+
+(define get_vars(lambda (clause)
+               (if (empty? clause)
+                   '()   
+                   (if (list? (car clause)) 
+                       (cons (car (cdr (car clause))) (get_vars (cdr clause)))                  
+                       (cons (car clause) (get_vars (cdr clause)))
+                   )
+               )
+  )
+  )

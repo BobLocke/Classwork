@@ -1,0 +1,47 @@
+type List
+
+operations:
+
+createList: List
+prepend: Element x List -> List
+append: List x Element
+insert: List x Element y index -> List
+removeFromList: List x index -> List 
+
+isEmpty: List -> boolean
+head: List -> Element
+tail: List -> List
+length: List -> int
+retrieve: List * index -> Element
+
+variables: l = list; x = data element; y = index
+
+isEmpty(createList) = true
+head(createList) = error, NULL
+tail(createList) = error, createList
+length(createList) = 0
+retrieve(createList, y) = error
+
+isEmpty(prepend(l, x)) = false
+head(prepend(l,x)) = x
+tail(prepend(l,x)) = tail(l) + x
+length(prepend(l,x)) = length(l) + 1
+retrieve(prepend(l,x),y) = retrieve(l, y)
+
+isEmpty(append(l, x)) = false
+head(append(l,x)) = head(l)
+tail(append(l,x)) = l
+length(append(l,x)) = length(l) + 1
+retrieve(append(l,x),y) = retrieve(l, y)
+
+isEmpty(insert(l, y, x) = false
+head(insert(l,x)) = head(insert(l,x))
+tail(insert(l,x)) = tail(insert(l,x))
+length(insert(l,x)) = length(l) + 1
+retrieve(insert(l,x),y) = retrieve(l, y)
+
+isEmpty(removeFromList(l, y)) = if length(l) = 0 error, if length(l) = 1 true, else false 
+head(removeFromList(l, y)) = if isEmpty(l) error, else head(l)
+tail(removeFromList(l,y)) =  if isEmpty(l) error, else tail(l)
+length(removeFromList(l,y)) = length(l) - 1
+retrieve(removeFromList(l,y1),y2) = retrieve(l, y2)

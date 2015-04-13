@@ -1,0 +1,62 @@
+#include<math.h>
+#include<stdio.h>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846264338327950288
+#endif
+
+long double f(long double x){
+  return 4.0L/1.0L + x*x;
+}
+
+long double trap(long double *f, long double a, long double b, int n){
+  long double h = (b - a)/n;
+  long double sum = .5*(f(a) - f(b));
+  for (int i = 1; i < n; i++){
+    long double x = a + i * h;
+    sum += f(x);   
+  }
+  return sum *= h;
+}
+
+long double simpsons(long double (*f), long double a, long double b, int n){
+
+}
+
+long double simpsons38(long double *f, long double a, long double b, int n){
+
+}
+
+long double booles(long double *f, long double a, long double b, int n){
+
+}
+
+int main(void) {
+  const unsigned maxn = 800000;
+
+  for (unsigned n = 12; n <= maxn; n *= 2) {
+
+    const long double I_trap = trap(f, 0, 1, n);
+
+    const long double error_trap = fabsl(M_PI - I_trap);
+
+    //  const long double I_simp = simpsons(f, 0, 1, n);
+
+    // const long double error_simp = fabsl(M_PI - I_simp);
+
+    // const long double I_simp38 = simpsons38(f, 0, 1, n);
+
+    //const long double error_simp38 = fabsl(M_PI - I_simp38);
+
+    // const long double I_booles = booles(f, 0, 1, n);
+
+    // const long double error_booles = fabsl(M_PI - I_booles);
+
+    // printf("%5d %0.10Le %0.10Le %0.10Le %0.10Le\n", n, 
+    // error_trap, error_simp, error_simp38, error_booles);
+
+    printf("%5d", error_trap);
+
+  }
+  return 0;
+}

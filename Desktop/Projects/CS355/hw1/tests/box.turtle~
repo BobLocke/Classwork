@@ -1,0 +1,11 @@
+a := 5
+FORWARD a
+a := a + 10
+LEFT 90
+FORWARD a
+a := a + 10
+LEFT 90
+FORWARD a
+a := a + 10
+LEFT 90
+FORWARD a

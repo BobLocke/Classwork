@@ -1,0 +1,15 @@
+Ryan "Bob" Dean
+CS360 Final Assignment - mFtP
+
+
+
+to run:
+
+make
+./mFtP
+
+Files included:
+
+makefile
+server.c, client.c - the program
+

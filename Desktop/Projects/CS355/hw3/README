@@ -1,0 +1,17 @@
+Ryan "Bob" Dean
+lockelocke1620@yahoo.com
+CS355 - Turtle Interpreter
+
+To compile the turtle interpreter, type 
+make 
+
+To test, type 
+./turtle < tests/[input].turtle > [output].pgm
+
+The following files are included in the homework
+
+  - tests/: this folder has several sample programs for testing
+  - scanner.c scanner.h: complete implementation of the scanner
+  - turtle.c turle.h: implementation of turtle functionalities such as drawing, print out images. This will be used by the parser.
+  - symtab.c symtab.h: implementation of symbol table for the intepreter 
+  - parser.c parser.h: interpreter of the turtle language fed in by the scanner

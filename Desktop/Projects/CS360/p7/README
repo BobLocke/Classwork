@@ -1,0 +1,18 @@
+Ryan "Bob" Dean
+CS360 Assignment 7 - Philo w/ Threads
+
+There are 5 chopsticks at the table (one between each pair of adjacent philosophers).  In order to eat, a philosopher must acquire both the chopsticks adjacent to him/her.  If he/she cannot, they are made to wait until they can.  The wait time does not count as thinking time.  Once they have a pair of chopsticks, they eat for the expected period of time and then replace (release) the chopsticks on the table and begin their period of thinking.  Each philosopher repeats this process until they have eaten for a total of 100 seconds or more.
+
+The philosophers are threads and the chopsticks are semaphores.
+
+to run:
+
+make
+./Philo
+
+Files included:
+
+makefile
+sample.c - code for the connect executable
+random_r.c, random_r.h - random gaussian function
+

@@ -1,0 +1,31 @@
+Ryan "Bob" Dean
+lockelocke1620@yahoo.com
+Assignment 5 - Simple Hill climb in C and List ADT
+
+to run:
+
+3sat: ./3sat states.txt clauses.txt
+
+testaxioms: ./testaxioms
+
+Files included in this .tar:
+makefile
+list.h, list.c: the list scructure and methods
+3sat.c: 3sat implementation using the list ADT
+getword.c, getword.h: used for read and parsing files 
+listaxioms.c: assertions of the axioms in listaxioms.txt
+listaxioms.txt: axioms of the list ADT
+states.txt, clauses.txt: files used as input for 3sat.c
+
+What are the strengths and weaknesses of each language?
+
+	Prolog is messy and gross but is very efficient. Scheme and Prolog store no values, therefore using less/no memory. C is easier to read but potentially harder to write than Prolog depending on the problem. (Prolog is worse at both).
+
+Which application domain does each language fit the best?
+
+	C is for system level programming when you want interaction with the kernel and other deep down parts of the system. I'm not sure what Scheme and Prolog are for outside of acedemic purposes though. Maybe for systems with little to no memory?
+
+Which group of people does each language fit the best?
+
+	
+

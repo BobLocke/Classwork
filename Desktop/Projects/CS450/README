@@ -1,0 +1,15 @@
+Ryan "Bob" Dean
+CS 450 - Scapegoat Tree
+
+To run in terminal:
+
+go to containing directory
+python scapegoat.py < [input] > [output]
+
+
+
+To interpret the printed tree:
+
+Indentation signifies the depth. The leftmost displayed value is the 	root, the next leftmost are its children, and so on. To help, I also 	had the node print their immediate children on the same line in parens.
+
+

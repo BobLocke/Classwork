@@ -1,0 +1,26 @@
+Author: Ryan "Bob" Dean
+Email: lockelocke1620@yahoo.com
+
+A java program that converts a regular expression into an NFA. The regular expression can either by types in, or you can load in a list.
+
+Files:
+
+README - this readme
+NFA.java - main file
+transition.jajva - class file used by NFA
+input.txt - sample inputs
+
+-------
+
+to build: 
+
+cd ~/FiniteAutomata/src
+javac transition.java
+javac NFA.java
+
+
+to run:
+
+java NFA < input.txt (or whatever plaintext input file you want)
+
+

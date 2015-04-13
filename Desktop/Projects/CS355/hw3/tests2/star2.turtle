@@ -1,0 +1,37 @@
+VAR N
+VAR I
+
+N := 5   # number of sides
+
+PENUP
+LEFT 180
+FORWARD 10
+RIGHT 180
+PENDOWN
+
+PUSHSTATE
+I := 1
+WHILE I <= N DO
+  N := 5
+  FORWARD 7.7
+  RIGHT 720 / N
+  I := I+1
+  N := 7
+OD
+#N should have value 7 now
+
+POPSTATE
+
+PENUP
+RIGHT 45
+FORWARD 4
+PENDOWN
+
+PUSHSTATE
+I := 1
+WHILE I <= N DO
+  FORWARD 11.7
+  RIGHT 720 / N
+  I := I+1
+OD
+POPSTATE

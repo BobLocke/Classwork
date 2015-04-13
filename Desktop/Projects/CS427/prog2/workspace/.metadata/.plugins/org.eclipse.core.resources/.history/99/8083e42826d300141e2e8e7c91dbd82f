@@ -1,0 +1,109 @@
+package crypto;
+
+import java.util.Random;
+import java.util.Scanner;
+import java.math.BigInteger;
+
+public class crypto {
+	
+	// x = a ^ b % c
+	private static long powMod(long a, long b, long c){
+		long x = 1;
+		a = a % c;
+		
+		while (b > 0){
+			if (b % 2 == 1){
+				x = (x*a)%c;
+			}
+			b = b >> 1;
+			a = (a*a)%c;
+		}
+		return x;
+	}	
+	
+	//algorithm modified from wikipedia
+	private static boolean millerRabin(long n, int d){
+		long q = n - 1;
+		int k = 0;
+		Random rand = new Random();
+		
+		
+		while(q % 2 == 0){
+			k += 1;	
+			q /= 2;
+		}
+		
+		for (int i = 0; i < d; i++){
+			long a = Math.abs(rand.nextLong()) % (n-2) + 2;
+			//System.out.println("Iteration: " + i +" Test Value a: " + a);
+			long x = powMod(a, q, n);
+			if ((x == 1) || (x==(n-1))){
+				continue;
+			}
+			for (int j = 0; j < k - 1; j++){
+				x = (x*x)%n;
+				if (x == 1) return false;
+				if (x == (n - 1)) break;
+			} 
+			if (x == (n - 1)) continue;
+			return false;
+		}		
+		return true;
+	}
+
+	public static void main(String args[]){
+		int ITERS = 40;
+		long max = 0x7FFFFFFF;
+		long min = 0x40000000;
+		Scanner in = new Scanner(System.in);
+		
+		
+		while(true){
+			System.out.println("(1) Keygen, (2) Encrypt, (3) Decrypt?, or (9) Quit");
+			int mode = in.nextInt();
+			System.out.println("Input: " + mode);
+			if (mode == 1){
+				System.out.println("Keygen: Please input seed:");
+				long seed = in.nextLong();
+				Random r = new Random(seed);
+				BigInteger p = new BigInteger(31, r);				
+				long prime = Math.abs(p.longValue());				
+				prime = prime % (max - min) + min;
+				prime = prime * 2 + 1;
+				System.out.println("Testing " + prime + "...");	
+				while(millerRabin(prime, ITERS) == false){
+						System.out.println(prime + " is not prime.");
+						p = new BigInteger(31, r);
+						prime = Math.abs(p.longValue());				
+						prime = prime % (max - min) + min;
+						prime = prime * 2 + 1;
+						System.out.println("Testing " + prime + "...");
+					}
+					System.out.println(prime + " is maybe prime. Generating keys...");	
+					long d = Math.abs(r.nextLong()) % (prime-2) + 1;
+					long e = powMod(2, d, prime);
+					System.out.println("Public key: " + prime + ", 2, " + e);
+					System.out.println("Private key: " + prime + ", 2, " + d);
+					
+					
+					
+					
+			} else if (mode == 2){
+				System.out.println("Encrypting...");
+	
+	
+			} else if (mode == 3){
+				System.out.println("Decrypting...");
+	
+			}else if (mode == 9){
+				System.out.println("Bye!");
+				in.close();
+				return;
+			} else {
+				System.out.println(mode + " is not a valid option.");
+			}
+		}
+	}
+
+	
+}

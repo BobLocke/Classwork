@@ -1,0 +1,32 @@
+#Assumes action test has no errors
+PUSHSTATE
+
+#Should set a to 5
+a := 5
+
+#Should set a to 10
+a := a + 5
+
+#Should move 10
+FORWARD a
+
+#Should set a to -5
+a := a - 15
+LEFT 90
+
+#Should move -5 (backwards, down screen instead of up after LEFT)
+FORWARD a
+
+#Should set a to 15
+a := 5 * 3
+
+POPSTATE
+PUSHSTATE
+RIGHT 135
+FORWARD a
+
+#Should set a to 5
+a := a / 3
+
+RIGHT 90
+FORWARD a

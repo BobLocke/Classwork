@@ -1,0 +1,13 @@
+Ryan "Bob" Dean
+Program 4 - Distance Vector
+
+Analysis: See NetworkDValgorithm.xlsx
+
+To run: 
+
+go to containing directory in terminal
+
+make
+./dv
+
+

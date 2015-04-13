@@ -1,0 +1,13 @@
+Ryan "Bob" Dean
+Assignment 1 - Wordpairs
+
+Reads in pairs of words from a file, then sorts them in order of occurance, and prints them.
+
+
+to run:
+
+make
+./Wordpairs <-count> filename2 <filename2> <filename3> ... <filenameN>
+
+-count: How many word pairs are displayed at the end. If not included, the program will display all word pairs.
+

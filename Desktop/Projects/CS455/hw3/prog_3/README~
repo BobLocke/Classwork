@@ -1,0 +1,24 @@
+Ryan "Bob" Dean
+CS 455 Assignment 3 - GBN emulator - transport
+10/20/14
+
+Files included:
+
+transport.c : File created and submitted by me.
+README : This file.
+Everything else: Emulator files provided by instructor.
+
+
+To run:
+
+go to the prog_3 folder in terminal
+make clean
+make
+./rdt30_gbn
+
+To evaluate:
+set corruption and loss to values above 0, set trace to 3
+
+to check packet order, uncomment lines 93 and 163, run with trace 0
+
+

@@ -1,0 +1,12 @@
+Ryan "Bob" Dean
+Assignment 2 - Wordmatch
+CS 360
+
+Check if input word exists in a file.
+
+
+to run:
+
+make
+./Wordmatch word
+

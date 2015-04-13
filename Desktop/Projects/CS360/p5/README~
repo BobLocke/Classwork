@@ -1,0 +1,26 @@
+Ryan "Bob" Dean
+CS360 Assignment 4 - Connect
+
+Pipes two command line instructions seperated by a colon.
+
+
+
+to run:
+
+make
+./Connect [pathname1] : [pathname2]
+
+
+
+example included:
+
+./Connect cat song : sort
+
+Will sort the words in the file song in alphabetical order.
+
+
+Files included:
+
+makefile
+p4.c - code for the connect executable
+song - test file used in example

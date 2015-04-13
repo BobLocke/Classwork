@@ -1,0 +1,19 @@
+Ryan "Bob" Dean
+lockelocke1620@yahoo.com
+CS 427 - Program 1 - WSUcrypt
+
+This program encrypts and decrypts text using the methods found in the WSUcrypt documentation.
+
+To Run:
+
+make
+./WSUcrypt <inputfile> <key> <flag>
+
+inputfile (encrypt): a textfile containing plain text
+inputfile (decrypt): a textfile containing a hex string (any length)
+key: a text file containing a 16 character hex string
+flag: d for decrypt, e for encrypt
+
+
+Possible bugs: I think I ironed this out, but sometimes when decrypting, instead of getting plaintext back, you get hex values. These hex values ARE correct for the letters they represent, and can be checked through any of the hex > ascii converters online. I think it was trying to output nonprintable characters, so this shouldn't happen anymore.
+

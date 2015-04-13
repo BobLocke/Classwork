@@ -1,0 +1,92 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <float.h>
+#include <complex.h>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif 
+
+
+/*
+   Ryan "Bob" Dean
+   Assignemnt 2: The Durand-Kerner Method
+*/
+
+//
+// evaluate f(z) = c[0] + c[1]*z + c[2]*z^2 + ... + c[n-1]*z^{n-1} + z^n
+//               = c[0] * z*(c[1] + z*(z[2] + ... z*(c[n-1] + z)))
+// f = c[n-1] + z
+// f = c[n-2] + f*z
+// f = c[n-3] + f*z
+// ...
+// f = c[0] + r*z
+//
+double complex evalPoly(int n, const double complex c[], double complex z) {
+  // use horner's rule to eval f(guess)
+  double complex f = c[n-1] + z;
+  for (int i = n-2; i >= 0; i--)
+    f = c[i] + z*f;
+  return f;
+}
+
+float max(int n, const double complex c[]){
+  double complex x = c[n-1];
+  for (int j= n-2; j >= 0; j--){
+    if (cabs(c[j]) > cabs(x))
+      x = c[j];
+  }
+  return cabs(x);
+}    
+
+double complex Q(int n, const double complex guess[], int j){
+  double complex x = 1; 
+  for(int i = 0; i < n; i++){
+    if (i != j)
+      x *= (guess[j] - guess[i]);
+	}
+  return x;
+}
+
+int main(){
+
+  int n = 0;
+  double complex c[20];
+
+  double a, b;
+  while (scanf("%lf %lf", &a, &b) == 2)
+    c[n++] = a + b*I;
+
+  double complex guess[n];
+  double cZmax = 0;
+  double complex cZ[n]; 
+  double theta = 2*M_PI/n;
+  float R = 1 + max(n, c);
+
+  printf("iter 1\n");
+  for (int j = 0; j<n; j++){
+    guess[j] = ((cos(j*theta) + I * sin(j*theta)) * (R));
+    printf("z[%i] = %0.10f + %0.10f i\n", j, creal(guess[j]), cimag(guess[j]));
+	 }
+    for (int k=1; k < 50; k++){
+      cZmax = 0;
+      for(int j=0; j<n; j++){
+	cZ[j] = -1 * evalPoly(n, c, guess[j]) / Q(n, guess, j);
+	//printf("------%0.10f + %0.10fi\n", creal(cZ[j]),cimag(cZ[j]));
+	if (cabs(cZ[j]) > cZmax)
+	  cZmax = cabs(cZ[j]);  
+      }
+      for (int j=0; j <n; j++)
+	guess[j] += cZ[j];
+      if(cZmax <= FLT_EPSILON)
+	break;
+      printf("iter %i\n",k+1);
+      for(int j=0; j<n; j++)
+	printf("z[%i] = %0.10f + %0.10f i\n", j, creal(guess[j]), cimag(guess[j]));
+    }
+
+  
+    //   printf("%0.10f + %0.10fi\n", creal(guess[j]),cimag(guess[j]));
+  return 0;
+}
