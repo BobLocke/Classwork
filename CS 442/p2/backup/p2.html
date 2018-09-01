@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dancing Spider Robot</title>
+
+    <script src="matrix.js"></script>
+
+    <script id="vertex" type="x-shader">
+        attribute vec2 vertexPosition;
+        uniform mat4 ModelViewProjection;
+        void main() {
+        gl_Position = ModelViewProjection*vec4(vertexPosition, 0.0, 1.0);
+        }
+    </script>
+
+    <script id="fragment" type="x-shader">
+        precision mediump float;
+        uniform vec3 objectColor;
+        void main() {
+            gl_FragColor = vec4(objectColor, 1.0);
+        }
+    </script>
+
+    <script type="text/javascript">
+        var canvas;
+        var gl;
+        var program;
+        var ModelView, Projection;
+        var matrixStack;
+        var topAngle = 0;
+        var midAngle = 0;
+
+
+        function init() {
+            canvas = document.getElementById("mycanvas");
+            canvas.addEventListener("mousedown", mousedown, false)
+            gl = null;
+            try {
+                gl = canvas.getContext("webgl");
+            } catch (e) {gl = null;}
+            if (gl == null) {
+                alert("No WebGL! Bummer!");
+                return false;
+            }       
+
+            var v = document.getElementById("vertex").firstChild.nodeValue;
+            var vs = gl.createShader(gl.VERTEX_SHADER);
+            gl.shaderSource(vs,v);
+            gl.compileShader(vs);
+            if (!gl.getShaderParameter(vs,gl.COMPILE_STATUS))
+            console.log(gl.getShaderInfoLog(vs));
+
+            var f = document.getElementById("fragment").firstChild.nodeValue;
+            var fs = gl.createShader(gl.FRAGMENT_SHADER);
+            gl.shaderSource(fs,f);
+            gl.compileShader(fs);
+            if (!gl.getShaderParameter(fs,gl.COMPILE_STATUS))
+            console.log(gl.getShaderInfoLog(fs));
+
+            program = gl.createProgram();
+            gl.attachShader(program, vs);
+            gl.attachShader(program, fs);
+            gl.linkProgram(program);
+            gl.useProgram(program);
+
+            gl.ModelView = new Matrix4x4();
+            gl.Projection = new Matrix4x4();
+            gl.Projection.ortho(-12.5, 12.5, -26, -1, -1, +1);
+            gl.matrixStack = new Matrix4x4Stack();
+
+            program.ModelViewProjection = gl.getUniformLocation(program, "ModelViewProjection");
+            program.objectColor = gl.getUniformLocation(program, "objectColor");
+            program.vertexPosition = gl.getAttribLocation(program, "vertexPosition");
+            gl.clearColor(0.0, 0.0, 0.0, 1.0);
+
+            window.requestAnimFrame = (function(){
+                return  window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame    ||
+                window.oRequestAnimationFrame      ||
+                window.msRequestAnimationFrame     ||
+                function(/* function */ callback, /* DOMElement */ element){
+                    window.setTimeout(callback, 1000 / 60);
+                };
+            })();
+            return true;
+        }
+
+        var topAngle = {val : 0, min :   -10, max : 10, freq : 0.25};
+        var legAngle = {val : 0, min : -30, max : 30, freq : 0.1};
+        var fangAngle = {val : 0, min :   0, max : 35, freq : 0.1};
+        var bodyColor = [1.0, 0.4, 0.0];
+        var webColor = [1.0, 1.0, 1.0];
+        var eyeColor = [0.5, 0.0, 0.0];
+
+
+        var joint = {
+            numVerts : 20,
+            vbuffer : -1,
+            loadVBO : function() {
+                var verts = new Array(2*this.numVerts);
+                var dtheta = 2*Math.PI/this.numVerts;
+                for (var i = 0; i < this.numVerts; i++) {
+                    var theta = i*dtheta;
+                    verts[2*i] = Math.cos(theta);
+                    verts[2*i+1] = Math.sin(theta);
+                }
+                var varray = new Float32Array(verts);
+                this.vbuffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, varray, gl.STATIC_DRAW);
+            },
+            draw : function() {
+                if (this.vbuffer < 0)
+                    this.loadVBO();
+                loadUniforms();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.enableVertexAttribArray(program.vertexPosition);
+                gl.vertexAttribPointer(program.vertexPosition, 2, gl.FLOAT, false, 0, 0);
+                gl.drawArrays(gl.LINE_LOOP, 0, this.numVerts);
+            }
+        };
+
+        var head = {
+            vbuffer : -1,
+            numVerts : 0,
+            loadVBO : function() {
+                var varray = new Float32Array([]);
+                this.numVerts = varray.length/2;
+                this.vbuffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, varray, gl.STATIC_DRAW);
+            },
+            draw : function() {
+                if (this.vbuffer < 0)
+                    this.loadVBO();  
+                gl.objectColor = this.bodyColor;
+                loadUniforms();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.enableVertexAttribArray(program.vertexPosition);
+                gl.vertexAttribPointer(program.vertexPosition, 2, gl.FLOAT, false, 0, 0);
+                gl.drawArrays(gl.LINE_LOOP, 0, this.numVerts);
+            }
+        };
+
+        var legSeg = {
+            vbuffer : -1,
+            numVerts : 0,
+            loadVBO : function() {
+                var varray = new Float32Array([-0.0, -0.5,
+                    0.0, 0.5,
+                    -3.0, 0.5,
+                    -3.0, -0.5]);
+                this.numVerts = varray.length/2;
+                this.vbuffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, varray, gl.STATIC_DRAW);
+            },
+            draw : function() {
+                if (this.vbuffer < 0)
+                    this.loadVBO();  
+                loadUniforms();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.enableVertexAttribArray(program.vertexPosition);
+                gl.vertexAttribPointer(program.vertexPosition, 2, gl.FLOAT, false, 0, 0);
+                gl.drawArrays(gl.LINE_LOOP, 0, this.numVerts);
+            }
+        };
+
+        var body = {
+            vbuffer : -1,
+            numVerts : 0,
+            loadVBO : function() {
+                var varray = new Float32Array([ -1.0, 0.0, 
+                                                1.0, 0.0, 
+                                                2.0, -1.0, 
+                                                2.0, -5.0, 
+                                                1.0, -6.0, 
+                                                -1.0, -6.0, 
+                                                -2.0, -5.0, 
+                                                -2.0, -1.0]);
+                this.numVerts = varray.length/2;
+                this.vbuffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, varray, gl.STATIC_DRAW);
+            },
+            draw : function() {
+                if (this.vbuffer < 0)
+                    this.loadVBO();  
+                loadUniforms();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.enableVertexAttribArray(program.vertexPosition);
+                gl.vertexAttribPointer(program.vertexPosition, 2, gl.FLOAT, false, 0, 0);
+                gl.drawArrays(gl.LINE_LOOP, 0, this.numVerts);
+            }
+        };
+
+        var head = {
+            vbuffer : -1,
+            numVerts : 0,
+            loadVBO : function() {
+                var varray = new Float32Array([ 0.75, 0.0,
+                                                1.25, -1.0,
+                                                0.75, -2.0,
+                                                -0.75, -2.0,
+                                                -1.25, -1.0,
+                                                -0.75, 0.0]);
+                this.numVerts = varray.length/2;
+                this.vbuffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, varray, gl.STATIC_DRAW);
+            },
+            draw : function() {
+                if (this.vbuffer < 0)
+                    this.loadVBO();  
+                //gl.objectColor = bodyColor;
+                loadUniforms();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.enableVertexAttribArray(program.vertexPosition);
+                gl.vertexAttribPointer(program.vertexPosition, 2, gl.FLOAT, false, 0, 0);
+                gl.drawArrays(gl.LINE_LOOP, 0, this.numVerts);
+            }
+        };
+
+        var tip = {
+            vbuffer : -1,
+            numVerts : 0,
+            loadVBO : function() {
+                var varray = new Float32Array([ 0.5, 0.0,
+                                                0.0, 2.0,
+                                                -0.5, 0.0]);
+                this.numVerts = varray.length/2;
+                this.vbuffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, varray, gl.STATIC_DRAW);
+            },
+            draw : function() {
+                if (this.vbuffer < 0)
+                    this.loadVBO();  
+                //gl.objectColor = bodyColor;
+                loadUniforms();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.enableVertexAttribArray(program.vertexPosition);
+                gl.vertexAttribPointer(program.vertexPosition, 2, gl.FLOAT, false, 0, 0);
+                gl.drawArrays(gl.LINE_LOOP, 0, this.numVerts);
+            }
+        };
+
+        var eye = {
+            vbuffer : -1,
+            numVerts : 0,
+            loadVBO : function() {
+                var varray = new Float32Array([ 0.0, 0.0,
+                                                0.15, -0.15,
+                                                0.0, -0.3,
+                                                -0.15, -0.15]);
+                this.numVerts = varray.length/2;
+                this.vbuffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, varray, gl.STATIC_DRAW);
+            },
+            draw : function() {
+                if (this.vbuffer < 0)
+                    this.loadVBO();  
+                loadUniforms();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+                gl.enableVertexAttribArray(program.vertexPosition);
+                gl.vertexAttribPointer(program.vertexPosition, 2, gl.FLOAT, false, 0, 0);
+                gl.drawArrays(gl.LINE_LOOP, 0, this.numVerts);
+            }
+        };
+
+        var fang = {
+        vbuffer : -1,
+        loadVBO : function() {
+            var vertices = new Float32Array([
+                0, 0,
+               -0.5, -1,
+                0, -2,
+               -1, -1
+            ]);
+            this.vbuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+        },
+        draw : function() {
+            if (this.vbuffer < 0)
+                this.loadVBO();
+            loadUniforms();
+            gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuffer);
+            gl.enableVertexAttribArray(program.vertexPosition);
+            gl.vertexAttribPointer(program.vertexPosition, 
+                                   2, gl.FLOAT, false, 0, 0);
+            gl.drawArrays(gl.LINE_LOOP, 0, 4);
+        }
+    };
+
+        var drawLeg = function(angle) {
+            gl.matrixStack.push(gl.ModelView);  
+                gl.ModelView.scale(0.5, 0.5, 1);
+                joint.draw();
+                gl.matrixStack.pop(gl.ModelView);
+                gl.matrixStack.push(gl.ModelView);
+                gl.ModelView.rotate(angle, 0, 0, 1);
+                legSeg.draw();
+                gl.ModelView.translate(-3, 0, 0);
+                gl.ModelView.scale(0.5, 0.5, 1);
+                joint.draw();
+                gl.matrixStack.pop(gl.ModelView);
+                gl.matrixStack.push(gl.ModelView);
+                gl.ModelView.rotate(angle, 0, 0, 1);
+                gl.ModelView.translate(-3, 0, 0);
+                gl.ModelView.rotate(angle/2, 0, 0, 1);
+                legSeg.draw();
+                gl.matrixStack.pop(gl.ModelView);
+                gl.matrixStack.push(gl.ModelView);
+                gl.ModelView.rotate(angle, 0, 0, 1);
+                gl.ModelView.translate(-3, 0, 0);
+                gl.ModelView.rotate(angle/2, 0, 0, 1);
+                gl.ModelView.translate(-3, 0, 0);
+                gl.matrixStack.push(gl.ModelView);
+                gl.ModelView.scale(0.5, 0.5, 1);
+                joint.draw();
+                gl.matrixStack.pop(gl.ModelView);
+                gl.ModelView.rotate(90 + angle/4, 0, 0, 1);
+                tip.draw();
+                gl.matrixStack.pop(gl.ModelView);
+        }
+
+
+        var drawHead = function() {
+            head.draw();
+
+            gl.matrixStack.push(gl.ModelView);
+            gl.objectColor = eyeColor;
+            gl.ModelView.translate(-.375, -1.125, 0);
+            eye.draw();
+            gl.ModelView.translate(.75, 0, 0);
+            eye.draw();
+            gl.matrixStack.push(gl.ModelView);
+            gl.ModelView.scale(0.5, 0.5, 1);
+            gl.ModelView.translate(0.375, -.75, 0);
+            eye.draw();
+            gl.ModelView.translate(-0.75, 0, 0);
+            eye.draw();
+            gl.ModelView.translate(-0.75, 0, 0);
+            eye.draw();
+            gl.ModelView.translate(-0.75, 0, 0);
+            eye.draw();
+            gl.matrixStack.pop(gl.ModelView);
+            gl.ModelView.translate(-.75, -0.875, 0);
+            gl.objectColor = bodyColor;
+            gl.matrixStack.push(gl.ModelView);
+            gl.ModelView.scale(0.1, 0.1, 1);
+            joint.draw();
+            gl.matrixStack.pop(gl.ModelView);
+            //fang
+            gl.matrixStack.push(gl.ModelView);
+            gl.ModelView.scale(0.5, 0.5, 1);
+            fang.draw();
+            gl.matrixStack.pop(gl.ModelView);
+            gl.ModelView.translate(.75, 0, 0);
+            gl.matrixStack.push(gl.ModelView);
+            gl.ModelView.rotate(180, 0, 0, 1);
+            gl.matrixStack.push(gl.ModelView);
+            gl.ModelView.scale(0.1, 0.1, 1);
+            joint.draw();
+            gl.matrixStack.pop(gl.ModelView);
+            gl.matrixStack.push(gl.ModelView);
+            gl.ModelView.scale(0.5, 0.5, 1);
+            gl.ModelView.translate(0, 2, 0);
+            fang.draw();
+            gl.matrixStack.pop(gl.ModelView);
+            gl.matrixStack.pop(gl.ModelView);
+            gl.matrixStack.pop(gl.ModelView);
+
+        }
+
+
+        var drawJoints = function(){
+            gl.ModelView.translate(-2, -5, 0);
+            drawLeg(45);
+            //draw front left arm
+            gl.ModelView.translate(0, 1.25, 0);
+            drawLeg(22);
+            //draw forward middle left arm
+            gl.ModelView.translate(0, 1.5, 0);
+            drawLeg(-22);
+            //draw backward middle left arm
+            gl.ModelView.translate(0, 1.25, 0);
+            drawLeg(-45);
+            //draw back left arm
+            
+            gl.ModelView.translate(4, 0, 0);
+            gl.matrixStack.push(gl.ModelView);  
+            gl.ModelView.rotate(180, 0, 0, 1);
+            drawLeg(45);
+            gl.matrixStack.pop(gl.ModelView);
+            //
+            gl.ModelView.translate(0, -1.25, 0);
+            gl.matrixStack.push(gl.ModelView);  
+            gl.ModelView.rotate(180, 0, 0, 1);
+            drawLeg(22);
+            gl.matrixStack.pop(gl.ModelView);
+            //draw backkward middle right arm
+            gl.ModelView.translate(0, -1.5, 0);
+            gl.matrixStack.push(gl.ModelView);  
+            gl.ModelView.rotate(180, 0, 0, 1);
+            drawLeg(-22);
+            gl.matrixStack.pop(gl.ModelView);
+            //draw forward middle right arm
+            gl.ModelView.translate(0, -1.25, 0);
+            gl.matrixStack.push(gl.ModelView);  
+            gl.ModelView.rotate(180, 0, 0, 1);
+            drawLeg(-45);
+            gl.matrixStack.pop(gl.ModelView);
+            //draw front right arm
+            gl.ModelView.translate(-2, -1, 0);
+            gl.matrixStack.push(gl.ModelView);  
+            gl.ModelView.scale(0.5, 0.5, 1);
+            joint.draw();
+            gl.matrixStack.pop(gl.ModelView);
+            drawHead();
+            //draw head     
+        }
+
+        var drawBody = function() {
+            gl.objectColor = bodyColor;
+            body.draw();
+            drawJoints();
+        }
+
+        var drawWeb = function() {
+
+            //gl.ModelView.translate(0, 0, 0);
+            gl.objectColor = webColor;
+            gl.matrixStack.push(gl.ModelView);
+            gl.ModelView.rotate(90, 0, 0, 1)
+            gl.matrixStack.push(gl.ModelView);           
+            gl.ModelView.scale(4, 0.1, 1)
+            legSeg.draw();
+            gl.matrixStack.pop(gl.ModelView);
+            gl.matrixStack.pop(gl.ModelView);
+            gl.matrixStack.push(gl.ModelView);
+            gl.ModelView.translate(0, -12, 0);
+            gl.matrixStack.push(gl.ModelView);
+            gl.ModelView.scale(0.2, 0.2, 1);
+            joint.draw();
+            gl.matrixStack.pop(gl.ModelView)
+            drawBody();
+            gl.matrixStack.pop(gl.ModelView);
+
+        }
+
+        function drawRobot() {
+            gl.objectColor = webColor;
+            gl.matrixStack.push(gl.ModelView);  
+            gl.ModelView.rotate(topAngle.val, 0, 0, 1);  
+            drawWeb();
+            gl.matrixStack.pop(gl.ModelView);
+        }
+
+        function loadUniforms() {
+            var ModelViewProjection = gl.Projection.mult(gl.ModelView);
+            gl.uniformMatrix4fv(program.ModelViewProjection, false, ModelViewProjection.array);
+            gl.uniform3fv(program.objectColor, gl.objectColor);
+        }
+
+        function display() { 
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            //gl.ModelView.rotate(top, 0, 0, 1);
+            drawRobot();
+            gl.flush();
+        }
+
+        var animating = false;
+
+       /* var calcAngle = function(time, min, max){
+            angle = min + (Math.sin(2 * time * Math.PI) * (max - min));
+            return angle;
+        }*/
+
+        function calcAngle(freq, min, max, t) {
+            var s = Math.sin(freq*2*Math.PI*t);  // -1 <= s <= +1
+            return 0.5*(s + 1)*(max - min) + min;
+        }
+
+        function mousedown() {
+            console.log("mouseDown()");
+            animating = !animating;   // toggle animation on/off
+            if (animating)
+                requestAnimFrame(drawAnimFrame);
+        }
+
+        var animationStartTime;
+            function drawAnimFrame(currentTime) {
+            if (animating)
+                requestAnimFrame(drawAnimFrame);
+            if (animationStartTime === undefined)
+                animationStartTime = currentTime;
+            var elapsedTime = (currentTime - animationStartTime)/1000;
+
+            topAngle.val = calcAngle(topAngle.freq, topAngle.min, topAngle.max, elapsedTime);
+            // Update Robot Model Parameters
+            display();
+        }
+
+    </script>
+
+</head>
+
+<body onload=" if (init()) display()">
+    <center>
+
+  <canvas id="mycanvas" width="500" height="500"></canvas> <br> <br />
+    <em>click to toggle animation</em>
+
+<hr />
+<footer>
+Ryan "Bob" Dean<br />
+October 8, 2015
+</footer>
+</center>
+</body>
+
+</html>

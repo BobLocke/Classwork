@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Toroidal Spiral</title>
+
+    <script src="matrix.js"></script>
+
+    <script id="vertex" type="x-shader">
+        attribute vec2 vertexPosition;
+        uniform mat4 ModelViewProjection;
+        void main() {
+        gl_Position = ModelViewProjection*vec4(vertexPosition, 0.0, 1.0);
+        }
+    </script>
+
+    <script id="fragment" type="x-shader">
+        precision mediump float;
+        uniform vec3 objectColor;
+        void main() {
+            gl_FragColor = vec4(objectColor, 1.0);
+        }
+    </script>
+
+    <script type="text/javascript">
+        var canvas;
+        var gl;
+        var program;
+        var ModelView, Projection;
+        var matrixStack;
+
+        function init() {
+            canvas = document.getElementById("mycanvas");
+            canvas.addEventListener("mousedown", mousedown, false)
+            gl = null;
+            try {
+                gl = canvas.getContext("webgl");
+            } catch (e) {gl = null;}
+            if (gl == null) {
+                alert("No WebGL! Bummer!");
+                return false;
+            }       
+
+            var v = document.getElementById("vertex").firstChild.nodeValue;
+            var vs = gl.createShader(gl.VERTEX_SHADER);
+            gl.shaderSource(vs,v);
+            gl.compileShader(vs);
+            if (!gl.getShaderParameter(vs,gl.COMPILE_STATUS))
+            console.log(gl.getShaderInfoLog(vs));
+
+            var f = document.getElementById("fragment").firstChild.nodeValue;
+            var fs = gl.createShader(gl.FRAGMENT_SHADER);
+            gl.shaderSource(fs,f);
+            gl.compileShader(fs);
+            if (!gl.getShaderParameter(fs,gl.COMPILE_STATUS))
+            console.log(gl.getShaderInfoLog(fs));
+
+            program = gl.createProgram();
+            gl.attachShader(program, vs);
+            gl.attachShader(program, fs);
+            gl.linkProgram(program);
+            gl.useProgram(program);
+
+            gl.ModelView = new Matrix4x4();
+            gl.Projection = new Matrix4x4();
+            gl.Projection.ortho(-10, 10, -10, 10, -1, +1);
+            gl.matrixStack = new Matrix4x4Stack();
+
+            program.ModelViewProjection = gl.getUniformLocation(program, "ModelViewProjection");
+            program.objectColor = gl.getUniformLocation(program, "objectColor");
+            program.vertexPosition = gl.getAttribLocation(program, "vertexPosition");
+            gl.clearColor(0.0, 0.0, 0.0, 1.0);
+
+            window.requestAnimFrame = (function(){
+                return  window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame    ||
+                window.oRequestAnimationFrame      ||
+                window.msRequestAnimationFrame     ||
+                function(/* function */ callback, /* DOMElement */ element){
+                    window.setTimeout(callback, 1000 / 60);
+                };
+            })();
+            return true;
+        }
+
+
+
+
+
+
+
+
+
+
+        function loadUniforms() {
+            var ModelViewProjection = gl.Projection.mult(gl.ModelView);
+            gl.uniformMatrix4fv(program.ModelViewProjection, false, ModelViewProjection.array);
+            gl.uniform3fv(program.objectColor, gl.objectColor);
+        }
+
+        function display() { 
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            gl.flush();
+        }
+
+    </script>
+
+</head>
+
+<body onload=" if (init()) display()">
+    <center>
+
+  <canvas id="mycanvas" width="500" height="500"></canvas> <br> <br />
+    <em>click to toggle animation</em>
+
+<hr />
+<footer>
+Ryan "Bob" Dean<br />
+October 15, 2015
+</footer>
+</center>
+</body>
+
+</html>

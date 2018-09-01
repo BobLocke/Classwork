@@ -1,0 +1,17 @@
+Ryan "Bob" Dean
+ryan.dean@wsu.edu
+CS 442
+Project 2 - Dancing Robot
+
+This project builds a robot and animates it in a jovial manner. Should run in any standard web browser with webGL enabled.
+
+To Run:
+Load robot.html in a web browser.
+
+Files Included in this archive:
+
+robot.html - The robot in all its glory.
+matrix.js - dependancy for robot.html
+README - this readme file
+
+Additional note for the instructor/grader: My laptop will not run webgl as it's too old and crummy, so if there's any problem with the animation (or not enough animation) please let me know, as I'm not able to test it here. I won't be able to fix it until I get into the lab on Tuesday.

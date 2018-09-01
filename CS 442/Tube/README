@@ -1,0 +1,17 @@
+Ryan "Bob" Dean
+ryan.dean@wsu.edu
+CS 442
+Project 3 - Toroidal Spiral Tube
+
+This project creates a shaded tube that wraps around a toroid. Also has checkboxes to display a wire mesh and the spine of the tube.
+
+To Run:
+Load toroid.html in a web browser.
+
+Files Included in this archive:
+
+toroid.html - The tube, wonderfully orange.
+matrix.js - dependancy for robot.html
+README - this readme file
+
+Additional note for the instructor/grader: The spine does not have proper lighting but still displays a line, although the lighting/shading is buggy it is still visible (I think it looks neat, myself). The hedgehog lines, however, do not work with the shader so I commented them out. I don't think the hedgehog was part of the assignement anyway, but if you want to see it, uncomment out the code in the html body (lines 528-530) at the bottom, then set tToggle to "false" and hToggle to "true" on lines 74 and 75. As long as you don't enable the surface, the hedgehogs should display, though without any shading or color.

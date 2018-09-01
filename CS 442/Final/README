@@ -1,0 +1,19 @@
+Ryan "Bob" Dean
+ryan.dean@wsu.edu
+CS 442
+Project 5 - Shadows and Reflections
+
+This project uses previously defined shapes and casts shadows and reflections onto a plane.
+
+To Run:
+Load reflect.html in a web browser.
+
+Files Included in this archive:
+
+reflect.html - The shape
+toroid.js, hyperquad.js - shape data
+matrix.js - dependancy for shapes
+README - this readme file
+various jpg and png files - texture files to be rendered on the surface of the shape
+
+Notes: The Toroidal Spiral does odd things when changing the loops, this is standard behavior. Also, the sliders don't reset to default values on refresh.

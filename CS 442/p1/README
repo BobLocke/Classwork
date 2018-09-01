@@ -1,0 +1,18 @@
+Ryan "Bob" Dean
+ryan.dean@wsu.edu
+CS 442
+Project 1 - Polygon Triangulation
+
+This project takes a series of points (provided by the user in json format), and uses triangles to create a shape bound by those points.
+
+To Run:
+PolygonTriangulate.js < [input json] > [output json]
+The output can then be submitted to 
+http://ezekiel.vancouver.wsu.edu/~cs442/projects/tri/viz/drawpoly.html
+which will draw the triangles with the output.
+
+Files Included in this archive:
+
+PolygonTriangulate.js - The script that creates the triangle data from the privided points.
+*.json - sample input files
+README - this readme file

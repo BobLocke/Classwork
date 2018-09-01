@@ -1,0 +1,18 @@
+Ryan "Bob" Dean
+ryan.dean@wsu.edu
+CS 442
+Project 4 - Textured HyperQuad
+
+This project creates a hyperquadratic shapes that holds a non-uniform texture.
+
+To Run:
+Load textured.html in a web browser.
+
+Files Included in this archive:
+
+textured.html - The shape
+matrix.js - dependancy for textured.html
+README - this readme file
+face.jpg, ff6balance.png, ff6ruin.png, PathfinderMap.jpg, smiley.png - texture files to be rendered on the surface of the shape
+
+Notes: I didn't feel like figuring out why setting a default value for the radio buttons wouldn't work, I just had the model load with a different texture. Select a texture to view.
